@@ -47,38 +47,38 @@ JSON schema below details all the fields to be sent as part of Physical badging 
 
 Schema:
 ```
-	{
-		"title" : "Physical Badging Signals",
-		"description" : "Access signals from physical badging systems",
-		"DataType" : {
-			"description" : "Identify what is the data type for input signal",
+{
+	"title" : "Physical Badging Signals",
+	"description" : "Access signals from physical badging systems",
+	"DataType" : {
+		"description" : "Identify what is the data type for input signal",
+		"type" : "string",
+	},
+	"type" : "object",
+	"properties": {
+		"User UPN" : {
+			"description" : "Unique identifier AAD Id resolved by the source system",
 			"type" : "string",
 		},
-		"type" : "object",
-		"properties": {
-			"User UPN" : {
-				"description" : "Unique identifier AAD Id resolved by the source system",
-				"type" : "string",
-			},
-			"Asset ID": {
-				"description" : "Unique ID of the physical asset/access point",
-				"type" : "string",
-			},
-			"AssetName": {
-				"description" : "friendly name of the physical asset/access point",
-				"type" : "string",
-			},
-			"Time" : {
-				"description" : "timestamp of access",
-				"type" : "string",
-			},
-			"AccessStatus" : {
-				"description" : "what was the status of access attempt - Success/Failure",
-				"type" : "string",
-			},
-		}
-		"required" : ["User UPN", "Asset ID", "Time" "AccessStatus"]
+		"Asset ID": {
+			"description" : "Unique ID of the physical asset/access point",
+			"type" : "string",
+		},
+		"AssetName": {
+			"description" : "friendly name of the physical asset/access point",
+			"type" : "string",
+		},
+		"Time" : {
+			"description" : "timestamp of access",
+			"type" : "string",
+		},
+		"AccessStatus" : {
+			"description" : "what was the status of access attempt - Success/Failure",
+			"type" : "string",
+		},
 	}
+	"required" : ["User UPN", "Asset ID", "Time" "AccessStatus"]
+}
 ```
 
 ## Common Errors and resolution
