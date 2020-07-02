@@ -46,12 +46,13 @@ The script would retry  over a period of about 15 mins if it encounters any tran
 JSON schema below details all the fields to be sent as part of Physical badging records you will share with us. Please make sure you follow this as a reference while forming JSON payload. 
 
 Schema:
-```{
+```
+	{
 		"title" : "Physical Badging Signals",
 		"description" : "Access signals from physical badging systems",
 		"DataType" : {
 			"description" : "Identify what is the data type for input signal",
-            "type" : "string",
+			"type" : "string",
 		},
 		"type" : "object",
 		"properties": {
@@ -77,7 +78,8 @@ Schema:
 			},
 		}
 		"required" : ["User UPN", "Asset ID", "Time" "AccessStatus"]
-	}```
+	}
+```
 
 ## Common Errors and resolution
 
