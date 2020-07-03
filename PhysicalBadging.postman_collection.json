@@ -1,0 +1,102 @@
+{
+	"info": {
+		"_postman_id": "5a0ec7aa-7191-4950-b817-0ec1468f54d9",
+		"name": "PhysicalBadging",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Save Signals",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n\t{\n\t\t\"AssetId\":\"Mid-Sec-7\",\n\t\t\"AssetName\":\"Main Building 1st Floor Mid Section\",\n\t\t\"AccessStatus\":\"Failed\",\n\t\t\"EventTime\":\"2019-07-04T01:57:49\",\n\t\t\"UserId\":\"{{userId1}}\",\n\t\t\"SourceSystem\":\"Lenel\"\n\t},\n\t{\n\t\t\"AssetId\":\"Mid-Sec-7\",\n\t\t\"AssetName\":\"Main Building 1st Floor Mid Section\",\n\t\t\"AccessStatus\":\"Success\",\n\t\t\"EventTime\":\"2019-07-04T02:57:49\",\n\t\t\"UserId\":\"{{userId2}}\",\n\t\t\"SourceSystem\":\"Lenel\"\n\t}\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/signals/physicalbadging?jobid={{jobId}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"signals",
+						"physicalbadging"
+					],
+					"query": [
+						{
+							"key": "jobid",
+							"value": "{{jobId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "6f3e901a-37a7-4fab-8188-65f7b8afa663",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "6ef041e4-2769-41f5-bac3-0db71ba2a51c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "54387966-e1b9-46e2-b922-700256ee3ff2",
+			"key": "host",
+			"value": "https://webhook.ingestion.office.com",
+			"type": "string"
+		},
+		{
+			"id": "eb532f14-4599-4cee-b3bf-7a83ac1617ec",
+			"key": "jobId",
+			"value": "FILL_ME",
+			"type": "string"
+		},
+		{
+			"id": "557f03d4-f66d-4b8c-8f81-80301a889005",
+			"key": "userId1",
+			"value": "FILL_ME",
+			"type": "string"
+		},
+		{
+			"id": "fe085ec9-3d4b-45ae-b6f9-9f29cf802c8e",
+			"key": "userId2",
+			"value": "FILL_ME",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

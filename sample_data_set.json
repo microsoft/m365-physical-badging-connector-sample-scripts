@@ -1,0 +1,18 @@
+﻿[
+	{
+		"AssetId":"Mid-Sec-7",
+		"AssetName":"Main Building 1st Floor Mid Section",
+		"AccessStatus":"Failed",
+		"EventTime":"2019-07-04T01:57:49",
+		"UserId":"tifc@a830edad9050849EQTPWBJZXODQ.onmicrosoft.com",
+		"SourceSystem":"Lenel"
+	},
+	{
+		"AssetId":"Mid-Sec-7",
+		"AssetName":"Main Building 1st Floor Mid Section",
+		"AccessStatus":"Success",
+		"EventTime":"2019-07-04T02:57:49",
+		"UserId":"onsing@a830edad9050849EQTPWBJZXODQ.onmicrosoft.com",
+		"SourceSystem":"Lenel"
+	}
+]
