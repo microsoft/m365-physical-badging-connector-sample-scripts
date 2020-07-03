@@ -22,7 +22,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "[\n\t{\n\t\t\"AssetId\":\"Mid-Sec-7\",\n\t\t\"AssetName\":\"Main Building 1st Floor Mid Section\",\n\t\t\"AccessStatus\":\"Failed\",\n\t\t\"EventTime\":\"2019-07-04T01:57:49\",\n\t\t\"UserId\":\"tifc@a830edad9050849EQTPWBJZXODQ.onmicrosoft.com\",\n\t\t\"SourceSystem\":\"Lenel\"\n\t},\n\t{\n\t\t\"AssetId\":\"Mid-Sec-7\",\n\t\t\"AssetName\":\"Main Building 1st Floor Mid Section\",\n\t\t\"AccessStatus\":\"Success\",\n\t\t\"EventTime\":\"2019-07-04T02:57:49\",\n\t\t\"UserId\":\"tifc@a830edad9050849EQTPWBJZXODQ.onmicrosoft.com\",\n\t\t\"SourceSystem\":\"Lenel\"\n\t}\n]",
+					"raw": "[\n\t{\n\t\t\"AssetId\":\"Mid-Sec-7\",\n\t\t\"AssetName\":\"Main Building 1st Floor Mid Section\",\n\t\t\"AccessStatus\":\"Failed\",\n\t\t\"EventTime\":\"2019-07-04T01:57:49\",\n\t\t\"UserId\":\"{{userId1}}\",\n\t\t\"SourceSystem\":\"Lenel\"\n\t},\n\t{\n\t\t\"AssetId\":\"Mid-Sec-7\",\n\t\t\"AssetName\":\"Main Building 1st Floor Mid Section\",\n\t\t\"AccessStatus\":\"Success\",\n\t\t\"EventTime\":\"2019-07-04T02:57:49\",\n\t\t\"UserId\":\"{{userId2}}\",\n\t\t\"SourceSystem\":\"Lenel\"\n\t}\n]",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -74,15 +74,27 @@
 	],
 	"variable": [
 		{
-			"id": "dd8b521e-8ce4-4fcd-a066-346af82c1299",
+			"id": "54387966-e1b9-46e2-b922-700256ee3ff2",
 			"key": "host",
 			"value": "https://webhook.ingestion.office.com",
 			"type": "string"
 		},
 		{
-			"id": "9eee6a64-b4dc-496d-87d0-8048e6823b06",
+			"id": "eb532f14-4599-4cee-b3bf-7a83ac1617ec",
 			"key": "jobId",
-			"value": "f683eea3-a14b-4927-8575-44206ce70e7d",
+			"value": "FILL_ME",
+			"type": "string"
+		},
+		{
+			"id": "557f03d4-f66d-4b8c-8f81-80301a889005",
+			"key": "userId1",
+			"value": "FILL_ME",
+			"type": "string"
+		},
+		{
+			"id": "fe085ec9-3d4b-45ae-b6f9-9f29cf802c8e",
+			"key": "userId2",
+			"value": "FILL_ME",
 			"type": "string"
 		}
 	],

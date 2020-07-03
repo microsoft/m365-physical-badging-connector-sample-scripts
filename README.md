@@ -28,7 +28,8 @@ Create you AAD APP https://docs.microsoft.com/en-us/azure/kusto/management/acces
 
 ## Create your job on M365 Compliance portal
 
-Provide required details at Physical Badging Connector and create a job and note the **JOB_ID**
+Follow the steps in [Set up Physical Badging Connector](https://go.microsoft.com/fwlink/?linkid=2133516) to get started.
+Provide the required details, create an M365 Physical badging connector job and note the **JOB_ID**
 
 ## Run the powershell script
 ```powershell
