@@ -15,7 +15,7 @@ contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additio
 # m365-physical-badging-connector-sample-scripts
 This repository includes sample scripts for pushing organization's physical badging records, to be consumed by Microsoft's Insider Risk Management compliance solution. 
 
-This repository includes a powershell script, a postman script ans a sample file containing physical badging records. You can send up to 100K signals per API call.
+This repository includes a powershell script, a postman script ans a sample file containing physical badging records. You can send up to 100K records per API call.
 
 ## Creating AAD APP
 
@@ -32,7 +32,7 @@ Provide required details at Physical Badging Connector and create a job and note
 
 ## Run the powershell script
 ```powershell
-.\save_physical_badging_signals.ps1 -tenantId "<Tenant Id>" -appId "<AAD App Id>" -appSecret "<AAD App Secret>" -jobId "<Job Id>" -jsonFilePath "<JSON_FILE_PATH>"
+.\push_physical_badging_records.ps1 -tenantId "<Tenant Id>" -appId "<AAD App Id>" -appSecret "<AAD App Secret>" -jobId "<Job Id>" -jsonFilePath "<JSON_FILE_PATH>"
 ```
 
 JSON_FILE_PATH must be the local file path for the json data file.

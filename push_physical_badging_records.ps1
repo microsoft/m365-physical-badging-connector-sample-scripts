@@ -1,4 +1,4 @@
-# Usage: .\save_physical_badging_signals.ps1 -tenantId "<Tenant Id>" -appId "<AAD App Id>" -appSecret "<AAD App Secret>" -jobId "<Job Id>" -jsonFilePath "<JSON_FILE_PATH>"
+# Usage: .\push_physical_badging_records.ps1 -tenantId "<Tenant Id>" -appId "<AAD App Id>" -appSecret "<AAD App Secret>" -jobId "<Job Id>" -jsonFilePath "<JSON_FILE_PATH>"
 
 param
 (   
@@ -97,7 +97,7 @@ function WriteErrorMessage($errorMessage) {
     $PSCmdlet.WriteError($ErrorRecord)
 }
 
-function SavePhysicalBadgingSignals ($access_token) {
+function PushPhysicalBadgingRecords ($access_token) {
     $nvCollection = [System.Web.HttpUtility]::ParseQueryString([String]::Empty) 
     $nvCollection.Add('jobid', $jobId)
     $uriRequest = [System.UriBuilder]"$eventApiUrl/$eventApiEndpoint"
@@ -141,5 +141,5 @@ function SavePhysicalBadgingSignals ($access_token) {
 
 RetryCommand -ScriptBlock {
     $access_token = GetAccessToken
-    SavePhysicalBadgingSignals($access_token)
+    PushPhysicalBadgingRecords($access_token)
 }
