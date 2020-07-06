@@ -34,6 +34,6 @@ Schema:
 			"type" : "string",
 		},
 	}
-	"required" : ["User UPN", "Asset ID", "Time" "AccessStatus"]
+	"required" : ["UserId", "AssetId", "EventTime" "AccessStatus"]
 }
 ```
