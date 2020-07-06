@@ -57,11 +57,11 @@ Schema:
 	},
 	"type" : "object",
 	"properties": {
-		"User UPN" : {
+		"UserId" : {
 			"description" : "Unique identifier AAD Id resolved by the source system",
 			"type" : "string",
 		},
-		"Asset ID": {
+		"AssetId": {
 			"description" : "Unique ID of the physical asset/access point",
 			"type" : "string",
 		},
@@ -69,7 +69,7 @@ Schema:
 			"description" : "friendly name of the physical asset/access point",
 			"type" : "string",
 		},
-		"Time" : {
+		"EventTime" : {
 			"description" : "timestamp of access",
 			"type" : "string",
 		},
