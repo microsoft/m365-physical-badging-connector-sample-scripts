@@ -30,7 +30,7 @@ Schema:
 			"type" : "string",
 		},
 		"AccessStatus" : {
-			"description" : "what was the status of access attempt - Success/Failure",
+			"description" : "what was the status of access attempt - Success/Failed",
 			"type" : "string",
 		},
 	}
