@@ -119,7 +119,7 @@ function PushPhysicalBadgingRecords ($access_token) {
 	} 
 	
     try {
-		$result = Invoke-WebRequest -Uri $url -Method POST -Body $json -Headers $headers -TimeoutSec 150
+		$result = Invoke-WebRequest -Uri $url -Method POST -Body $json -Headers $headers -TimeoutSec 300
     }
     catch {
 		WriteErrorMessage($_)
