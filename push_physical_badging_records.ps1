@@ -22,8 +22,10 @@ $resource = 'https://microsoft.onmicrosoft.com/4e476d41-2395-42be-89ff-34cb9186a
 $eventApiUrl = "https://webhook.ingestion.office.com"
 $eventApiEndpoint = "api/signals/physicalbadging"
 
+$chunkSize = 50000
+
 function GetAccessToken () {
-	Write-Host -fore green "******Getting Access Token******"
+    Write-Host -fore green "******Getting Access Token******"
     # Token Authorization URI
     $uri = "$($oAuthTokenEndpoint)?api-version=1.0"
 
@@ -47,7 +49,7 @@ function GetAccessToken () {
     }
 
     $response = Invoke-RestMethod @params -ErrorAction Stop
-	Write-Host -fore green "******Access Token Acquired******"
+    Write-Host -fore green "******Access Token Acquired******"
     return $response.access_token
 }
 
@@ -76,7 +78,7 @@ function RetryCommand {
                 Write-Error $_.Exception.InnerException.Message -ErrorAction Continue
                 Start-Sleep 60
                 if ($cnt -lt $Maximum) {
-                    Write-Output "Retrying"
+                    Write-Host "Retrying"
                 }
             }
             
@@ -105,37 +107,48 @@ function PushPhysicalBadgingRecords ($access_token) {
 
     $url = $uriRequest.Uri.OriginalString
 
-    try{
-		$json = Get-Content $jsonFilePath
-    }catch{
-        WriteErrorMessage("Error reading from file. Please check if path is correct")
-        return
-    }
-	
-	$headers = @{
-		"Accept"="application/json"
-		"Authorization"="Bearer $access_token"
-		"Content-Type"="application/json"
-	} 
-	
     try {
-		$result = Invoke-WebRequest -Uri $url -Method POST -Body $json -Headers $headers -TimeoutSec 300
+        $allRecords = Get-Content $jsonFilePath | ConvertFrom-Json
     }
     catch {
-		WriteErrorMessage($_)
+        WriteErrorMessage("Error reading from file. Please check if path is correct. File is not being used elsewhere and file is a valid json data")
         return
     }
-
-	$status_code = [int]$result.StatusCode
-    if ($status_code -eq 200 -or $status_code -eq 201) {
-		Write-Host -fore green "******Upload Successful******"
-		Write-Output $result.Content
+    
+    for ($i = 0; $i -lt $allRecords.count; $i += $chunksize) {
+        $Chunks += , @($allRecords[$i..($i + $chunksize - 1)]);
     }
-    elseif ($status_code -eq 0 -or $status_code -eq 501 -or $status_code -eq 503) {
-        throw "Service unavailable."
-    }
-    else {
-        WriteErrorMessage("Failure with StatusCode [{0}] and ReasonPhrase [{1}]" -f $result.StatusCode, $result.ReasonPhrase)
+    
+    $headers = @{
+        "Accept"        = "application/json"
+        "Authorization" = "Bearer $access_token"
+        "Content-Type"  = "application/json"
+    } 
+    
+    $chunkCount = 0
+    foreach ($chnk in $Chunks) {
+        $chunkCount = $chunkCount + 1
+        Write-Host -fore yellow "Processing chunk $chunkCount of $($Chunks.Count) with $($chnk.Length) records"
+        $jsonChunk = $chnk | ConvertTo-Json
+        try {
+            $result = Invoke-WebRequest -Uri $url -Method POST -Body $jsonChunk -Headers $headers -TimeoutSec 400
+        }
+        catch {
+            WriteErrorMessage($_)
+            return
+        }
+        
+        $status_code = [int]$result.StatusCode
+        if ($status_code -eq 200 -or $status_code -eq 201 -or $status_code -eq 207) {
+            Write-Host -fore green "******Upload Successful******"
+            Write-Host $result.Content
+        }
+        elseif ($status_code -eq 0 -or $status_code -eq 501 -or $status_code -eq 503) {
+            throw "Service unavailable."
+        }
+        else {
+            WriteErrorMessage("Failure with StatusCode [{0}] and ReasonPhrase [{1}]" -f $result.StatusCode, $result.ReasonPhrase)
+        }
     }
 }
 
