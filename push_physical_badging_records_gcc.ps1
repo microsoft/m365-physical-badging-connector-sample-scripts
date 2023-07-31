@@ -143,7 +143,7 @@ function PushPhysicalBadgingRecords ($access_token) {
             Write-Host -fore green "******Upload Successful******"
             Write-Host $result.Content
         }
-        elseif ($status_code -eq 0 -or $status_code -eq 501 -or $status_code -eq 503) {
+        elseif ($status_code -eq 0 ) {
             throw "Service unavailable."
         }
         else {
