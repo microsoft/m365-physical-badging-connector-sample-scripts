@@ -76,10 +76,10 @@ function RetryCommand {
             }
             catch {
                 Write-Error $_.Exception.InnerException.Message -ErrorAction Continue
+                Start-Sleep 60
                 if ($cnt -lt $Maximum) {
                     Write-Host "Retrying"
                 }
-                Start-Sleep 60
             }
             
         } while ($cnt -lt $Maximum)
