@@ -12,6 +12,8 @@ param
     [string] $jobId,
     [Parameter(mandatory = $true)]
     [string] $jsonFilePath
+    [Parameter(mandatory = $false)]
+    [Int] $retryTimeout
 )
 
 # Access Token Config
@@ -76,10 +78,11 @@ function RetryCommand {
             }
             catch {
                 Write-Error $_.Exception.InnerException.Message -ErrorAction Continue
+                Write-Host ("Will retry in [{0}] seconds" -f $retryTimeout)
+                Start-Sleep $retryTimeout
                 if ($cnt -lt $Maximum) {
                     Write-Host "Retrying"
                 }
-                Start-Sleep 60
             }
             
         } while ($cnt -lt $Maximum)
