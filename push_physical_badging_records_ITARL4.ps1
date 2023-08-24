@@ -11,7 +11,7 @@ param
     [Parameter(mandatory = $true)]
     [string] $jobId,
     [Parameter(mandatory = $true)]
-    [string] $jsonFilePath
+    [string] $jsonFilePath,
     [Parameter(mandatory = $false)]
     [Int] $retryTimeout = 60
 )
