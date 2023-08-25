@@ -13,7 +13,7 @@ param
     [Parameter(mandatory = $true)]
     [string] $jsonFilePath,
     [Parameter(mandatory = $false)]
-    [Int] $retryTimeout
+    [Int] $retryTimeout = 60
 )
 
 # Access Token Config
