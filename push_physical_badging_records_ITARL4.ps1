@@ -152,7 +152,7 @@ function PushPhysicalBadgingRecords ($access_token) {
         else {
             $errorstring = "Failure with StatusCode [{0}] and ReasonPhrase [{1}]" -f $result.StatusCode, $result.ReasonPhrase
             WriteErrorMessage($errorstring)
-	        throw $errorstring
+            throw $errorstring
         }
     }
 }
