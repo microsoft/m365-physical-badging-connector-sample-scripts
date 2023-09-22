@@ -62,7 +62,7 @@ function RetryCommand {
         [scriptblock]$ScriptBlock,
 
         [Parameter(Position = 1, Mandatory = $false)]
-        [int]$Maximum = 15
+        [int]$Maximum = 5
     )
 
     Begin {
@@ -150,7 +150,9 @@ function PushPhysicalBadgingRecords ($access_token) {
             throw "Service unavailable."
         }
         else {
-            WriteErrorMessage("Failure with StatusCode [{0}] and ReasonPhrase [{1}]" -f $result.StatusCode, $result.ReasonPhrase)
+            $errorstring = "Failure with StatusCode [{0}] and ReasonPhrase [{1}]" -f $result.StatusCode, $result.ReasonPhrase
+            WriteErrorMessage($errorstring)
+            throw $errorstring
         }
     }
 }
