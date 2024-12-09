@@ -138,7 +138,6 @@ function PushPhysicalBadgingRecords ($access_token) {
         }
         catch {
             WriteErrorMessage($_)
-            return
         }
         
         $status_code = [int]$result.StatusCode
