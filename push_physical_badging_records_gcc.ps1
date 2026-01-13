@@ -134,7 +134,7 @@ function PushPhysicalBadgingRecords ($access_token) {
         Write-Host -fore yellow "Processing chunk $chunkCount of $($Chunks.Count) with $($chnk.Length) records"
         $jsonChunk = $chnk | ConvertTo-Json
         try {
-            $result = Invoke-WebRequest -Uri $url -Method POST -Body $jsonChunk -Headers $headers -TimeoutSec 400
+            $result = Invoke-WebRequest -Uri $url -Method POST -Body $jsonChunk -Headers $headers -TimeoutSec 400 -UseBasicParsing
         }
         catch {
             WriteErrorMessage($_)
